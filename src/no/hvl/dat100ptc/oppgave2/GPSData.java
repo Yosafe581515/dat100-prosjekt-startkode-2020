@@ -17,19 +17,21 @@ public class GPSData {
 	}
 
 	public GPSPoint[] getGPSPoints() {
-		return this.gpspoints;
+		return gpspoints;
 	}
 	
 	protected boolean insertGPS(GPSPoint gpspoint) {
 
 		boolean inserted = false;
 		
-		if(antall <this.gpspoints.length)
-			this.gpspoints[antall]=gpspoint;
+		if(antall < gpspoints.length) {
+			gpspoints[antall]=gpspoint;
 			antall++;
-			
+			inserted = true;
+		}	
 		return inserted;
 	}
+	
 
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 
@@ -38,6 +40,7 @@ public class GPSData {
 		
 		return sattinn;
 	}
+	
 
 	public void print() {
 
