@@ -1,4 +1,6 @@
 package no.hvl.dat100ptc.oppgave2;
+import static java.lang.Integer.*;
+import static java.lang.Double.*;
 
 import no.hvl.dat100ptc.TODO;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
@@ -14,28 +16,27 @@ public class GPSDataConverter {
 
 	public static int toSeconds(String timestr) {
 		
-		int secs;
-		int hr, min, sec;
+		int hr=subStringInt(timestr, 11, 13);
+		int min=subStringInt(timestr,14,16);
+		int sec=subStringInt(timestr,17,19);
 		
-		// TODO
-		// OPPGAVE - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// OPPGAVE - SLUTT
-		
+		int secs=(hr*3600)+(min*60)+sec;
+		return secs;
 	}
+	public static int subStringInt(String s, int a, int b) {
+		String sub=s.substring(a,b);
+		int r=parseInt(sub);
+		return r;
+	}
+	
 
 	public static GPSPoint convert(String timeStr, String latitudeStr, String longitudeStr, String elevationStr) {
 
-		GPSPoint gpspoint;
-
-		// TODO - START ;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		GPSPoint gpspoint=new GPSPoint(toSeconds(timeStr),parseDouble(latitudeStr),parseDouble(longitudeStr),parseDouble(elevationStr));
 
-		// OPPGAVE - SLUTT ;
-	    
+
+	    return gpspoint;
 	}
 	
 }
