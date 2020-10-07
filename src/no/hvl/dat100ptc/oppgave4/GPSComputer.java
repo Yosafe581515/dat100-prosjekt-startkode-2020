@@ -75,14 +75,15 @@ public class GPSComputer {
 	public double maxSpeed() {
 		
 		double maxspeed = 0;
-		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - SLUTT
-		
+		for(int i=0;i<speeds().length;i++) {
+			if (speeds()[i]>maxspeed) {
+				maxspeed=speeds()[i];
+			}	
+		}
+		return maxspeed;
 	}
+	
+	
 
 	public double averageSpeed() {
 
