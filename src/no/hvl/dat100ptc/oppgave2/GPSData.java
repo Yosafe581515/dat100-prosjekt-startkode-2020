@@ -9,12 +9,7 @@ public class GPSData {
 
 	private GPSPoint[] gpspoints;
 	protected int antall = 0;
-	
-	public GPSData() {
 
-		GPSPoint[] gpspoints;
-		antall=0;
-	}
 
 	public GPSData(int n) {
 

@@ -11,11 +11,11 @@ public class DataMetode {
 		double elv=5;
 		
 		GPSPoint P1=new GPSPoint(t,la,lo,elv);
-		System.out.print(P1.toString());
+		System.out.print("P1= "+P1.toString());
 		System.out.println(P1.getTime());
 		P1.setTime(t2);
 		System.out.print(P1.toString());
-		System.out.println("P1= "+P1.getTime()+"\n");
+		System.out.println(P1.getTime()+"\n");
 		
 		GPSDataConverter C1=new GPSDataConverter();
 		String time="2017-08-13T08:52:26.000Z";
@@ -23,12 +23,12 @@ public class DataMetode {
 		String longitude="5.217217";
 		String elevation="61.9";
 		System.out.println(C1.toSeconds(time));
-		GPSPoint P2=C1.convert(time, latitude, longitude,elevation);
+		GPSPoint P2= C1.convert(time, latitude, longitude,elevation);
 		System.out.println("P2= "+P2.toString());
 		
 		int n=3;
 		GPSData T1=new GPSData(n);
-		GPSData[] T2=new GPSData[n];
+//		GPSData[] T2=new GPSData[n];
 		skriveUtTab(T1.getGPSPoints());
 		boolean p1=T1.insertGPS(P1);
 		boolean p2=T1.insertGPS(P2);
