@@ -42,20 +42,22 @@ public class GPSComputer {
 	public double totalElevation() {
 
 		double elevation = 0;
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
-
+		for(int i=0;i < gpspoints.length;i++) {
+			elevation=gpspoints[i].getElevation();
+		}
+		return elevation;
 	}
 
 	// beregn total tiden for hele turen (i sekunder)
 	public int totalTime() {
+		
+		int totalTime=0;
+		
+		for(int i=0;i < gpspoints.length-1;i++) {
+			totalTime+=gpspoints[i+1].getTime()-gpspoints[i].getTime();
+		}
 
-		throw new UnsupportedOperationException(TODO.method());
-
+		return totalTime;
 	}
 		
 	// beregn gjennomsnitshastighets mellom hver av gps punktene
