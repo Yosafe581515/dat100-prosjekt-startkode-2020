@@ -2,6 +2,8 @@ package no.hvl.dat100ptc.oppgave3;
 
 import static java.lang.Math.*;
 
+import java.util.Locale;
+
 import no.hvl.dat100ptc.TODO;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
@@ -83,40 +85,39 @@ public class GPSUtils {
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		int secs;
-		double speed;
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		int secs=abs(gpspoint2.getTime()-gpspoint1.getTime());
+		double speedMPS=(distance(gpspoint1,gpspoint2))/secs;
+		
+		double speed=speedMPS*3.6;
+		
+		return speed;
 
 	}
 
 	public static String formatTime(int secs) {
-
-		String timestr;
-		String TIMESEP = ":";
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
 		
-		// TODO - SLUTT
-
+		int hr=secs/3600;
+		int restSekunder=secs%3600;
+		int min =restSekunder/60;
+		int sec=restSekunder%60;
+		
+		String timestr="";
+		String TIMESEP = ":";
+		
+		timestr=String.format("  %02d:%02d:%02d",hr,min,sec); //eller 
+//		timestr=String.format("  %02d" + TIMESEP + "%02d"+TIMESEP+"%02d",hr,min,sec);
+		
+		return timestr;
 	}
+	
+	
 	private static int TEXTWIDTH = 10;
 
 	public static String formatDouble(double d) {
-
-		String str;
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		
+		String str=String.format(Locale.US,"%10.2f", d);
+		
+		return str;
 		
 	}
 }
