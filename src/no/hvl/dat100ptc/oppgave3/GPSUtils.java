@@ -23,49 +23,62 @@ public class GPSUtils {
 	}
 
 	public static double findMin(double[] da) {
-
-		double min;
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUT
-
+		double min; 
+		min = da[0];
+			for (double d : da) {
+				if (d < min) {
+					min = d;
+				}
+			}
+		return min;
 	}
+	
 
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
-		// TODO - START
+		double [] gpspointsLa=new double[gpspoints.length];
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i=0;i< gpspointsLa.length;i++) {
+			gpspointsLa[i]=gpspoints[i].getLatitude();
+		}
 		
-		// TODO - SLUTT
+		return gpspointsLa;
 	}
 
+	
 	public static double[] getLongitudes(GPSPoint[] gpspoints) {
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
 		
-		// TODO - SLUTT
-
+		double [] gpspointsLo=new double[gpspoints.length];
+		
+		for (int i=0;i< gpspointsLo.length;i++) {
+			gpspointsLo[i]=gpspoints[i].getLongitude();
+		}
+		
+		return gpspointsLo;
 	}
+	
+	
 
 	private static int R = 6371000; // jordens radius
 
 	public static double distance(GPSPoint gpspoint1, GPSPoint gpspoint2) {
-
+		
+		
 		double d;
 		double latitude1, longitude1, latitude2, longitude2;
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
-
+		latitude1=toRadians(gpspoint1.getLatitude());
+		longitude1=toRadians(gpspoint1.getLongitude());
+		latitude2=toRadians(gpspoint2.getLatitude());
+		longitude2=toRadians(gpspoint2.getLongitude());
+		
+		double q=latitude2-latitude1;
+		double l=longitude2-longitude1;
+		
+		double a= pow(sin(q/2), 2)+cos(latitude1)*cos(latitude2)*pow(sin(l/2),2);
+		double c=2*atan2(sqrt(a),sqrt(1-a));
+		d=R*c;
+		
+		return d;
 	}
 
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
