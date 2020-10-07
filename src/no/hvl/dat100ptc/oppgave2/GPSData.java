@@ -9,6 +9,12 @@ public class GPSData {
 
 	private GPSPoint[] gpspoints;
 	protected int antall = 0;
+	
+	public GPSData() {
+
+		GPSPoint[] gpspoints;
+		antall=0;
+	}
 
 	public GPSData(int n) {
 
@@ -19,6 +25,11 @@ public class GPSData {
 	public GPSPoint[] getGPSPoints() {
 		return gpspoints;
 	}
+	
+	public GPSPoint getGPSAntall(int antall) {
+		return gpspoints[antall];
+	}
+	
 	
 	protected boolean insertGPS(GPSPoint gpspoint) {
 
