@@ -19,7 +19,7 @@ public class GPSComputer {
 	}
 
 	public GPSComputer(GPSPoint[] gpspoints) {
-		this.gpspoints = gpspoints;
+		this.gpspoints = gpspoints;	
 	}
 	
 	public GPSPoint[] getGPSPoints() {
@@ -30,13 +30,12 @@ public class GPSComputer {
 	public double totalDistance() {
 
 		double distance = 0;
+		
+		for(int i=1;i < gpspoints.length;i++) {
+			distance+=GPSUtils.distance(gpspoints[i-1],gpspoints[i]);
+		}
 
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
-
+		return distance;
 	}
 
 	// beregn totale høydemeter (i meter)
