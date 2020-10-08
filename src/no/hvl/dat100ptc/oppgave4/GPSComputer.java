@@ -110,27 +110,26 @@ public class GPSComputer {
 	public double kcal(double weight, int secs, double speed) {
 		 
 		double kcal;
-		 
-		    // MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
-		    double met = 0;     
-		    double speedmph = speed * MS;
-		    
-		    if(speedmph < 10)
-		        met = 4;
-		    else if(speedmph < 12)
-		        met = 6;
-		    else if(speedmph < 14)
-		        met = 8;
-		    else if(speedmph < 16)
-		        met = 10;
-		    else if(speedmph < 20)
-		        met = 12;
-		    else
-		        met = 16;
-		 
-		    kcal = met * weight * (secs / 3600.0);
-		    return kcal;
-		
+
+		// MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
+		double met = 0;
+		double speedmph = speed * MS;
+
+		if(speedmph < 10)
+			met = 4;
+		else if(speedmph < 12)
+			met = 6;
+		else if(speedmph < 14)
+			met = 8;
+		else if(speedmph < 16)
+			met = 10;
+		else if(speedmph < 20)
+			met = 12;
+		else
+			met = 16;
+
+		kcal = met * weight * (secs / 3600.0);
+		return kcal;
 	}
 
 	public double totalKcal(double weight) {
@@ -156,12 +155,26 @@ public class GPSComputer {
 
 		System.out.println("==============================================");
 
-		// TODO - START
+		String totalTimeStr = GPSUtils.formatTime(totalTime());
+		System.out.println("Total Time     : " + totalTimeStr);
 
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - SLUTT
-		
+		double totalDistanceKm = totalDistance() / 1000;
+		String totalDistanceStr = GPSUtils.formatDouble(totalDistanceKm);
+		System.out.println("Total distance : " + totalDistanceStr + " km");
+
+		String totalElevationStr = GPSUtils.formatDouble(totalElevation());
+		System.out.println("Total elevation: " + totalElevationStr + " m");
+
+		String maxSpeedStr = GPSUtils.formatDouble(maxSpeed());
+		System.out.println("Max speed      : " + maxSpeedStr + " km/t");
+
+		String averageSpeedStr = GPSUtils.formatDouble(averageSpeed());
+		System.out.println("Average speed  : " + averageSpeedStr + " km/t");
+
+		String totalKcalStr = GPSUtils.formatDouble(totalKcal(WEIGHT));
+		System.out.println("Energy         : " + totalKcalStr + " kcal");
+
+		System.out.println("==============================================");
 	}
 
 }
