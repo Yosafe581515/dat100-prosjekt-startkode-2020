@@ -108,18 +108,28 @@ public class GPSComputer {
 
 	// beregn kcal gitt weight og tid der kjøres med en gitt hastighet
 	public double kcal(double weight, int secs, double speed) {
-
+		 
 		double kcal;
-
-		// MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
-		double met = 0;		
-		double speedmph = speed * MS;
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		 
+		    // MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
+		    double met = 0;     
+		    double speedmph = speed * MS;
+		    
+		    if(speedmph < 10)
+		        met = 4;
+		    else if(speedmph < 12)
+		        met = 6;
+		    else if(speedmph < 14)
+		        met = 8;
+		    else if(speedmph < 16)
+		        met = 10;
+		    else if(speedmph < 20)
+		        met = 12;
+		    else
+		        met = 16;
+		 
+		    kcal = met * weight * (secs / 3600.0);
+		    return kcal;
 		
 	}
 
