@@ -136,13 +136,18 @@ public class GPSComputer {
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
-
-		// TODO - START
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for(int i = 0; i < gpspoints.length - 1; i++) {
+			GPSPoint point1 = gpspoints[i];
+			GPSPoint point2 = gpspoints[i + 1];
+			int secs = point2.getTime() - point1.getTime();
+			double speedKmt = GPSUtils.speed(point1,  point2);
+			double speedMps = speedKmt / 3.6;
 
-		// TODO - SLUTT
+			totalkcal += kcal(weight, secs, speedMps);
+		}
 		
+		return totalkcal;
 	}
 	
 	private static double WEIGHT = 80.0;
