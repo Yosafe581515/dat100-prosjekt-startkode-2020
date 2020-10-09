@@ -83,14 +83,9 @@ public class GPSComputer {
 		return maxspeed;
 	}
 	
-	
-
 	public double averageSpeed() {
 
-		double average = 0;
-		
-		average=(totalDistance()/totalTime())*3.6 ;
-		
+		double average = (totalDistance() / totalTime()) * 3.6;
 		return average;
 	}
 
