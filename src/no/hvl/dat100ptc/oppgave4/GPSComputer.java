@@ -56,14 +56,11 @@ public class GPSComputer {
 
 	// beregn total tiden for hele turen (i sekunder)
 	public int totalTime() {
-		
-		int totalTime=0;
-		
-		for(int i=0;i < gpspoints.length-1;i++) {
-			totalTime+=gpspoints[i+1].getTime()-gpspoints[i].getTime();
-		}
 
-		return totalTime;
+		int startTid = gpspoints[0].getTime();
+		int sluttTid = gpspoints[gpspoints.length - 1].getTime();
+
+		return sluttTid - startTid;
 	}
 		
 	// beregn gjennomsnitshastighets mellom hver av gps punktene
