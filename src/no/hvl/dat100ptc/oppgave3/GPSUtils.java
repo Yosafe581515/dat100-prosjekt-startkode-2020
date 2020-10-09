@@ -101,7 +101,7 @@ public class GPSUtils {
 		int min =restSekunder/60;
 		int sec=restSekunder%60;
 		
-		String timestr="";
+		String timestr;
 		String TIMESEP = ":";
 		
 		timestr=String.format("  %02d:%02d:%02d",hr,min,sec); //eller 
