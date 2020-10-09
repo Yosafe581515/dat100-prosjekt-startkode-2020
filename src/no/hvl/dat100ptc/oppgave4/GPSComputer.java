@@ -42,9 +42,15 @@ public class GPSComputer {
 	public double totalElevation() {
 
 		double elevation = 0;
-		for(int i=0;i < gpspoints.length;i++) {
-			elevation=gpspoints[i].getElevation();
+		double elevationDiff;
+
+		for(int i = 0; i < gpspoints.length - 1; i++) {
+			elevationDiff = gpspoints[i + 1].getElevation() - gpspoints[i].getElevation();
+
+			if(elevationDiff > 0)
+				elevation += elevationDiff;
 		}
+
 		return elevation;
 	}
 
