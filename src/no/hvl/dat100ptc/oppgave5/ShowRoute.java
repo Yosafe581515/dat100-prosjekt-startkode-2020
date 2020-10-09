@@ -62,12 +62,33 @@ public class ShowRoute extends EasyGraphics {
 	}
 
 	public void showRouteMap(int ybase) {
+		
+		double xstep = xstep();
+		double ystep = ystep();
+		double minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
+		double minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
+		setColor(0, 255, 0);
+		
+		int x, y, xprev, yprev;
+		xprev = yprev = 0;
+		for(int i = 0; i < gpspoints.length; i++) {
+			x = MARGIN + (int) ((gpspoints[i].getLongitude() - minlon) * xstep);
+			y = ybase - (int) ((gpspoints[i].getLatitude() - minlat) * ystep);
 
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - SLUTT
+			if(i != 0)
+				drawLine(xprev, yprev, x, y);
+
+			if(i == gpspoints.length - 1) {
+				setColor(0, 0, 255);
+				fillCircle(x, y, 6);
+			} else {
+				fillCircle(x, y, 3);
+			}
+
+			xprev = x;
+			yprev = y;
+		}
+
 	}
 
 	public void showStatistics() {
@@ -76,12 +97,33 @@ public class ShowRoute extends EasyGraphics {
 
 		setColor(0,0,0);
 		setFont("Courier",12);
-		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO - SLUTT;
+		String drawStringArg;
+
+		String totalTimeStr = GPSUtils.formatTime(gpscomputer.totalTime());
+		drawStringArg = "Total Time     : " + totalTimeStr;
+		drawString(drawStringArg, TEXTDISTANCE, TEXTDISTANCE);
+
+		double totalDistanceKm = gpscomputer.totalDistance() / 1000;
+		String totalDistanceStr = GPSUtils.formatDouble(totalDistanceKm);
+		drawStringArg = "Total distance : " + totalDistanceStr + " km";
+		drawString(drawStringArg, TEXTDISTANCE, TEXTDISTANCE * 2);
+
+		String totalElevationStr = GPSUtils.formatDouble(gpscomputer.totalElevation());
+		drawStringArg = "Total elevation: " + totalElevationStr + " m";
+		drawString(drawStringArg, TEXTDISTANCE, TEXTDISTANCE * 3);
+
+		String maxSpeedStr = GPSUtils.formatDouble(gpscomputer.maxSpeed());
+		drawStringArg = "Max speed      : " + maxSpeedStr + " km/t";
+		drawString(drawStringArg, TEXTDISTANCE, TEXTDISTANCE * 4);
+
+		String averageSpeedStr = GPSUtils.formatDouble(gpscomputer.averageSpeed());
+		drawStringArg = "Average speed  : " + averageSpeedStr + " km/t";
+		drawString(drawStringArg, TEXTDISTANCE, TEXTDISTANCE * 5);
+
+		double weight = 80; // vi antar at syklisten er 80 kg
+		String totalKcalStr = GPSUtils.formatDouble(gpscomputer.totalKcal(weight));
+		drawStringArg = "Energy         : " + totalKcalStr + " kcal";
+		drawString(drawStringArg, TEXTDISTANCE, TEXTDISTANCE * 6);
 	}
 
 }
