@@ -77,12 +77,9 @@ public class GPSComputer {
 	
 	public double maxSpeed() {
 		
-		double maxspeed = 0;
-		for(int i=0;i<speeds().length;i++) {
-			if (speeds()[i]>maxspeed) {
-				maxspeed=speeds()[i];
-			}	
-		}
+		double[] speedt = speeds();
+		double maxspeed = GPSUtils.findMax(speedt);
+
 		return maxspeed;
 	}
 	
