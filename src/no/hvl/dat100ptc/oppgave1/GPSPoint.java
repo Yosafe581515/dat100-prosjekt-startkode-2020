@@ -46,6 +46,7 @@ public class GPSPoint {
 		this.elevation=elevation;
 	}
 	
+	//#"\n"
 	public String toString() {
 		return time+" ("+latitude+","+longitude+") "+elevation+"\n";
 	}

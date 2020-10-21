@@ -12,7 +12,7 @@ public class GPSComputer {
 	private GPSPoint[] gpspoints;
 	
 	public GPSComputer(String filename) {
-
+		//#4hva er filereader, file name?
 		GPSData gpsdata = GPSDataFileReader.readGPSFile(filename);
 		gpspoints = gpsdata.getGPSPoints();
 
@@ -151,7 +151,7 @@ public class GPSComputer {
 		System.out.println("==============================================");
 
 		String totalTimeStr = GPSUtils.formatTime(totalTime());
-		System.out.println("Total Time     : " + totalTimeStr);
+		System.out.println("Total Time     : " + String.format("%10s",totalTimeStr));
 
 		double totalDistanceKm = totalDistance() / 1000;
 		String totalDistanceStr = GPSUtils.formatDouble(totalDistanceKm);

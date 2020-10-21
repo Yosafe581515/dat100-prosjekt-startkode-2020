@@ -37,8 +37,8 @@ public class GPSData {
 		}	
 		return inserted;
 	}
-	
-
+		
+	//#2GPSDataConverter.convert//kan vi lage kjonstruktor der og lage en objekt variable (S1) her
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 
 		GPSPoint gpspoint= GPSDataConverter.convert(time,latitude,longitude,elevation);
